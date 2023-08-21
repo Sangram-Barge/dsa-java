@@ -56,4 +56,9 @@ class ArrayTest {
 		assertTrue(arr.remove("val1"));
 		assertEquals(1, arr.size());
 	}
+
+	@Test
+	void failingTest() {
+		assertFalse(true);
+	}
 }
