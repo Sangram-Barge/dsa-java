@@ -81,6 +81,33 @@ public class DoublyLinkedListTest {
   }
 
   @Test
+  public void removeLastShouldRemoveLastElement() {
+    lst.add("sangram");
+    lst.add("anushree");
+    lst.add("sudhakar");
+    var rmData = lst.removeLast();
+    assertEquals(rmData, "sudhakar");
+    assertEquals(lst.getTail().data, "anushree");
+    assertEquals(lst.size(), 2);
+    assertNull(lst.getTail().next);
+  }
+
+  @Test
+  public void removeLastEmptyShouldThrowException() {
+    assertThrows(RuntimeException.class, () -> {
+      lst.removeLast();
+    });
+  }
+
+  @Test
+  public void removeLastWithSingleElementShouldEmptyList() {
+    lst.add("sangram");
+    lst.removeLast();
+    assertEquals(lst.size(), 0);
+    assertNull(lst.getTail());
+  }
+
+  @Test
   public void print() {
     lst.add("sangram");
     lst.add("anushree");

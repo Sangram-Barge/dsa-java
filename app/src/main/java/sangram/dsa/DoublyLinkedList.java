@@ -1,5 +1,6 @@
 package sangram.dsa;
 
+@SuppressWarnings("hiding")
 public class DoublyLinkedList<T> {
   class Node <T> {
     Node(T data, Node <T> next, Node <T> prev) {
@@ -71,6 +72,17 @@ public class DoublyLinkedList<T> {
     size--;
     if (this.isEmpty()) this.tail = null;
     else this.head.prev = null;
+    return data;
+  }
+  
+  public T removeLast() {
+    if (isEmpty()) throw new RuntimeException("list is empty");
+    T data = this.tail.data;
+    this.tail = this.tail.prev;
+    size--;
+
+    if(isEmpty()) this.head = null;
+    else tail.next = null;
     return data;
   }
  
