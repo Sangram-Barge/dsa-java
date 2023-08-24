@@ -85,6 +85,18 @@ public class DoublyLinkedList<T> {
     else tail.next = null;
     return data;
   }
+
+  public T removeNode(Node<T> n) {
+    if (n.prev == null) return removeFirst();
+    if (n.next == null) return  removeLast();
+    n.next.prev = n.prev;
+    n.prev.next = n.next;
+    n.prev = n.next = null;
+    T data = n.data;
+    n.data = null;
+    size--;
+    return data;
+  }
  
   public void setSize(Integer size) {
     this.size = size;

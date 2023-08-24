@@ -115,4 +115,17 @@ public class DoublyLinkedListTest {
     lst.add("kusum");
     lst.print();
   }
+
+  @Test
+  public void removeNodeShouldRemoveNode() {
+    lst.add("sangram");
+    lst.add("anushree");
+    lst.add("kusum");
+    DoublyLinkedList<String>.Node<String> n = lst.getHead().next;
+    var rNodeData = lst.removeNode(n);
+    assertEquals("anushree", rNodeData);
+    assertEquals(2, lst.size());
+    assertEquals(lst.getHead().next.data, "kusum");
+    assertEquals(lst.getHead().data, "sangram");
+  }
 }
