@@ -64,6 +64,15 @@ public class DoublyLinkedList<T> {
     return this.tail.data;
   }
  
+  public T removeFirst() {
+    if (this.isEmpty()) throw new RuntimeException("list is empty");
+    T data = this.head.data;
+    this.head = this.head.next;
+    size--;
+    if (this.isEmpty()) this.tail = null;
+    else this.head.prev = null;
+    return data;
+  }
  
   public void setSize(Integer size) {
     this.size = size;

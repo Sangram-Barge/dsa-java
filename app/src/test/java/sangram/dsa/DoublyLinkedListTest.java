@@ -2,6 +2,7 @@ package sangram.dsa;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -48,6 +49,35 @@ public class DoublyLinkedListTest {
     lst.add("sangram");
     lst.add("anushree");
     assertEquals(lst.peekLast(), "anushree");
+  }
+
+  @Test
+  public void removeFirstShouldRemoveFirstElement() {
+    lst.add("sangram");
+    lst.add("anushree");
+    lst.add("sudhakar");
+    var rmData = lst.removeFirst();
+    assertEquals(rmData, "sangram");
+    assertEquals(lst.size(), 2);
+    assertNull(lst.getHead().prev);
+
+  }
+
+  @Test
+  public void removeFirstWithSingleElementShouldEmptyList() {
+    lst.add("sangram");
+    var rmData = lst.removeFirst();
+    assertEquals(rmData, "sangram");
+    assertEquals(lst.size(), 0);
+    assertNull(lst.getHead());
+    assertNull(lst.getTail());
+  }
+
+  @Test
+  public void removeFirstOnEmptyListShouldThrowException() {
+    assertThrows(RuntimeException.class, () -> {
+      lst.removeFirst();
+    });  
   }
 
   @Test
