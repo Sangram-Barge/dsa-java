@@ -24,6 +24,30 @@ public class DoublyLinkedListTest {
   @Test
   public void addShouldAddElementToEndOfList() {
     lst.add("sangram");
+    assertEquals(lst.getHead().data, "sangram");
+  }
+
+  @Test
+  public void addFistShouldAddElementToBeginingOfList() {
+    lst.addFirst("today is the day ");
+    lst.addFirst("i am going to die");
+    lst.print();
+    assertEquals(lst.getHead().data,"i am going to die" );
+    assertEquals(lst.getHead().next.data, "today is the day ");
+    assertNull(lst.getHead().prev);
+  }
+
+  @Test
+  public void peekFirstShouldGiveHeadData() {
+    lst.add("sangram");
+    assertEquals(lst.peekFirst(), "sangram");
+  }
+
+  @Test
+  public void peekLstShouldGiveTailData() {
+    lst.add("sangram");
+    lst.add("anushree");
+    assertEquals(lst.peekLast(), "anushree");
   }
 
   @Test

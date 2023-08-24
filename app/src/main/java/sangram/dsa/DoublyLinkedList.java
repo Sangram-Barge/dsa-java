@@ -44,6 +44,27 @@ public class DoublyLinkedList<T> {
     return addLast(data);
   }
  
+  public T addFirst(T data) {
+    if (this.isEmpty()) this.head = this.tail = new Node<T>(data, null, null);
+    else {
+      this.head.prev = new Node<T>(data, this.head, null);
+      head = head.prev;
+    }
+    size++;
+    return data;
+  }
+
+  public T peekFirst() {
+    if (isEmpty()) throw new RuntimeException("list is empty");
+    return this.head.data;
+  }
+
+  public T peekLast() {
+    if (isEmpty()) throw new RuntimeException("list is empty");
+    return this.tail.data;
+  }
+ 
+ 
   public void setSize(Integer size) {
     this.size = size;
   }
