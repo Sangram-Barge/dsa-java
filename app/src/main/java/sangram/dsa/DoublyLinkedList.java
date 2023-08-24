@@ -98,6 +98,23 @@ public class DoublyLinkedList<T> {
     return data;
   }
  
+  public T remove(int index) {
+    if ( index < 0 || index >= size) throw new RuntimeException("invalid index");
+    int i;
+    Node<T> trav;
+    if (index < size/2)
+      for(i = 0, trav = this.head; i != index; i++)
+        trav = trav.next;
+    else
+      for(i = size-1, trav = tail; i != index; i--)
+        trav = trav.prev;
+    return removeNode(trav);
+  }
+
+  public boolean remove(String string) {
+    return false;
+  }
+
   public void setSize(Integer size) {
     this.size = size;
   }
@@ -121,4 +138,5 @@ public class DoublyLinkedList<T> {
       trav = trav.next;
     }
   }
+
 }

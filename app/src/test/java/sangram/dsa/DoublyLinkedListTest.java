@@ -3,6 +3,7 @@ package sangram.dsa;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -127,5 +128,44 @@ public class DoublyLinkedListTest {
     assertEquals(2, lst.size());
     assertEquals(lst.getHead().next.data, "kusum");
     assertEquals(lst.getHead().data, "sangram");
+  }
+
+  @Test
+  public void removeAtShouldRemoveNodeAtIndex() {
+    lst.add("sangram");
+    lst.add("anushree");
+    lst.add("sudhakar");
+    lst.add("kusum");
+    lst.add("gouri");
+    lst.add("shreya");
+    lst.add("shravani");
+    lst.add("siddhi");
+    lst.add("riddhi");
+    lst.add("sami");
+
+    assertEquals(10, lst.size());
+    String data = lst.remove(8);
+    assertEquals("riddhi", data);
+    assertEquals(9, lst.size());
+  }
+
+  @Test
+  public void removeObjectShouldRemoveObject() {
+    lst.add("sangram");
+    lst.add("anushree");
+    lst.add("sudhakar");
+    lst.add("kusum");
+    lst.add("gouri");
+    boolean isSangramRemoved = lst.remove("sangram");
+    boolean isTestRemoved = lst.remove("test");
+    assertTrue(isSangramRemoved);
+    assertTrue(isTestRemoved);
+  }
+
+  @Test
+  public void removeAtInvalidIndexShouldThrowExcpetion() {
+    assertThrows(RuntimeException.class, () -> {
+      lst.remove(5);
+    });
   }
 }
