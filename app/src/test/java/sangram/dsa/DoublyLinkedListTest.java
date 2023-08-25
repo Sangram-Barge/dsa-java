@@ -110,15 +110,6 @@ public class DoublyLinkedListTest {
   }
 
   @Test
-  public void print() {
-    lst.add("sangram");
-    lst.add("anushree");
-    lst.add("sudhakar");
-    lst.add("kusum");
-    lst.print();
-  }
-
-  @Test
   public void removeNodeShouldRemoveNode() {
     lst.add("sangram");
     lst.add("anushree");
@@ -198,5 +189,16 @@ public class DoublyLinkedListTest {
     assertThrows(RuntimeException.class, () -> {
       lst.remove(5);
     });
+  }
+
+  @Test
+  public void print() {
+    lst.add("sangram");
+    lst.add("anushree");
+    lst.add("sudhakar");
+    lst.add(null);
+    lst.add("kusum");
+    lst.add("gouri");
+    lst.forEach(System.out::println);
   }
 }

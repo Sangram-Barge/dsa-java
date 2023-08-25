@@ -1,7 +1,9 @@
 package sangram.dsa;
 
+import java.util.Iterator;
+
 @SuppressWarnings("hiding")
-public class DoublyLinkedList<T> {
+public class DoublyLinkedList<T> implements Iterable<T>{
   class Node <T> {
     Node(T data, Node <T> next, Node <T> prev) {
       this.data = data;
@@ -173,6 +175,22 @@ public class DoublyLinkedList<T> {
       System.out.println(trav.data);
       trav = trav.next;
     }
+  }
+
+  @Override
+  public Iterator<T> iterator() {
+    return new Iterator<T>() {
+      private Node<T> trav = head;
+      @Override
+      public boolean hasNext() {
+        return trav.next != null;
+      }
+      public T next() {
+        T data = trav.data;
+        trav = trav.next;
+        return data;
+      }
+    };
   }
 
 }
