@@ -111,7 +111,24 @@ public class DoublyLinkedList<T> {
     return removeNode(trav);
   }
 
-  public boolean remove(String string) {
+  public boolean remove(T element) {
+    Node<T> trav;
+    if (element == null) {
+      for (trav = head; trav != null; trav = trav.next) {
+        if (trav.data == null) {
+          removeNode(trav);
+          return true;
+        }
+      }
+    }
+    else {
+      for (trav = head; trav != null; trav = trav.next) {
+        if (trav.data.equals(element)) {
+          removeNode(trav);
+          return true;
+        }
+      }
+    }
     return false;
   }
 
