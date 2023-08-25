@@ -156,11 +156,41 @@ public class DoublyLinkedListTest {
     lst.add("anushree");
     lst.add("sudhakar");
     lst.add("kusum");
+    lst.add(null);
     lst.add("gouri");
     boolean isSangramRemoved = lst.remove("sangram");
+    boolean isNullRemoved = lst.remove(null);
     boolean isTestRemoved = lst.remove("test");
+    assertTrue(isNullRemoved);
     assertTrue(isSangramRemoved);
     assertFalse(isTestRemoved);
+  }
+
+  @Test
+  public void indexOfShouldProvideCorrectIndexOfElement() {
+    lst.add("sangram");
+    lst.add("anushree");
+    lst.add("sudhakar");
+    lst.add(null);
+    lst.add("kusum");
+    lst.add("gouri");
+    assertEquals(-1, lst.indexOf("test"));
+    assertEquals(0, lst.indexOf("sangram"));
+    assertEquals(3, lst.indexOf(null));
+    assertEquals(2, lst.indexOf("sudhakar"));
+  }
+
+  @Test
+  public void indexOfShouldReturnValidIndex() {
+    lst.add("sangram");
+    lst.add("anushree");
+    lst.add("sudhakar");
+    lst.add(null);
+    lst.add("kusum");
+    lst.add("gouri");
+    assertTrue(lst.contains("sangram"));
+    assertFalse(lst.contains("test"));
+    assertTrue(lst.contains(null));
   }
 
   @Test

@@ -132,6 +132,25 @@ public class DoublyLinkedList<T> {
     return false;
   }
 
+  public int indexOf(T element) {
+    Node<T> trav;
+    int index;
+    if (element == null) {
+      for (trav = this.head, index = 0; trav != null; trav = trav.next, index++)
+        if (trav.data == null)
+          return index;
+    } else {
+      for (trav = this.head, index = 0; trav != null; trav = trav.next, index++)
+        if (element.equals(trav.data))
+          return index;
+    }
+    return -1;
+  }
+
+  public boolean contains(T element) {
+    return indexOf(element) != -1;
+  }
+
   public void setSize(Integer size) {
     this.size = size;
   }
