@@ -153,20 +153,12 @@ public class DoublyLinkedList<T> implements Iterable<T>{
     return indexOf(element) != -1;
   }
 
-  public void setSize(Integer size) {
-    this.size = size;
-  }
   public Node<T> getHead() {
     return head;
   }
-  public void setHead(Node<T> head) {
-    this.head = head;
-  }
+  
   public Node<T> getTail() {
     return tail;
-  }
-  public void setTail(Node<T> tail) {
-    this.tail = tail;
   }
 
   public void print() {
