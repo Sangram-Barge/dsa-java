@@ -34,4 +34,12 @@ public class QueueTest {
     assertEquals("sangram", queue.poll());
     assertEquals(1, queue.size());
   }
+
+  @Test
+  public void peekShouldJustReturnElementWithoutRemoving() {
+    queue.offer("sangram");
+    queue.offer("anushree");
+    assertEquals("anushree", queue.peek());
+    assertEquals(2, queue.size());
+  }
 }
